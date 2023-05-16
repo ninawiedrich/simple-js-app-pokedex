@@ -29,11 +29,13 @@ let pokemonRepository = (function () {
 
     if (
       typeof pokemon === "object" &&
-      Object.keys(pokemon).every((key) => requiredKeys.includes(key))
+      requiredKeys.every((key) => key in pokemon)
     ) {
       pokemonList.push(pokemon);
+      return true; // Indicate that the pokemon is successfully added
     } else {
       console.log("Object is missing required keys");
+      return false; // Indicate that the pokemon is not added
     }
   }
 
