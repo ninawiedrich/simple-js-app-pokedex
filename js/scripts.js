@@ -25,9 +25,16 @@ let pokemonRepository = (function () {
   }
 
   function add(pokemon) {
-    typeof pokemon === "object"
-      ? pokemonList.push(pokemon)
-      : console.log("pokemon is not an object");
+    let requiredKeys = ["name", "height", "types", "abilities"];
+
+    if (
+      typeof pokemon === "object" &&
+      Object.keys(pokemon).every((key) => requiredKeys.includes(key))
+    ) {
+      pokemonList.push(pokemon);
+    } else {
+      console.log("Object is missing required keys");
+    }
   }
 
   function add(pokemon) {
@@ -36,6 +43,12 @@ let pokemonRepository = (function () {
 
   return { getAll, add };
 })();
+
+pokemonRepository.add({
+  name: "Pikachu",
+  height: 0.4,
+  types: ["electric"],
+});
 
 pokemonRepository.getAll().forEach(function (pokemon) {
   let pokemonHeightCheck =
