@@ -37,11 +37,13 @@ let pokemonRepository = (function () {
     }
   }
 
-  function add(pokemon) {
-    pokemonList.push(pokemon);
+  function findByName(name) {
+    return pokemonList.filter(
+      (pokemon) => pokemon.name.toLowerCase() === name.toLowerCase()
+    );
   }
 
-  return { getAll, add };
+  return { getAll, add, findByName };
 })();
 
 pokemonRepository.add({
@@ -49,6 +51,9 @@ pokemonRepository.add({
   height: 0.4,
   types: ["electric"],
 });
+
+let bulbasaur = pokemonRepository.findByName("Bulbasaur");
+console.log(bulbasaur);
 
 pokemonRepository.getAll().forEach(function (pokemon) {
   let pokemonHeightCheck =
