@@ -25,13 +25,18 @@ let pokemonRepository = (function () {
   }
 
   function add(pokemon) {
+    typeof pokemon === "object"
+      ? pokemonList.push(pokemon)
+      : console.log("pokemon is not an object");
+  }
+
+  function add(pokemon) {
     pokemonList.push(pokemon);
   }
 
   return { getAll, add };
 })();
 
-// // with template literals
 pokemonRepository.getAll().forEach(function (pokemon) {
   let pokemonHeightCheck =
     pokemon.height > 0.6
