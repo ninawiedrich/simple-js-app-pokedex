@@ -20,18 +20,18 @@ let pokemonList = [
 ];
 
 // // with template literals
-for (let i = 0; i < pokemonList.length; i++) {
+pokemonList.forEach(function (pokemon) {
   let pokemonHeightCheck =
-    pokemonList[i].height > 0.6
+    pokemon.height > 0.6
       ? " <span class='highlight'>- Wow, that's big!</span>"
       : "";
 
   document.write(
     `<div class="card">
-      <h3>${pokemonList[i].name}</h3>
-      <p>Height: ${pokemonList[i].height}${pokemonHeightCheck}</p>
-      <p>Types: ${pokemonList[i].types.join(", ")}</p>
-      <p>Abilities: ${pokemonList[i].abilities.join(", ")}</p>
+      <h3>${pokemon.name}</h3>
+      <p>Height: ${pokemon.height}${pokemonHeightCheck}</p>
+      <p>Types: ${pokemon.types.join(", ")}</p>
+      <p>Abilities: ${pokemon.abilities.join(", ")}</p>
     </div>`
   );
-}
+});
