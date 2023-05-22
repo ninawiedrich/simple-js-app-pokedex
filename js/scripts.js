@@ -45,19 +45,24 @@ let pokemonRepository = (function () {
     );
   }
 
+  function addClickListener(buttonElement, pokemon) {
+    buttonElement.addEventListener("click", function () {
+      showDetails(pokemon);
+    });
+  }
+
   function addListItem(pokemon) {
     let pokemonList = document.querySelector(".pokemon-list");
     let listItem = document.createElement("li");
     let button = document.createElement("button");
     button.innerText = pokemon.name;
     button.classList.add("button-pokemon-list");
-    listItem.appendChild(button);
-    pokemonList.appendChild(listItem);
 
     // Add event listener to the button
-    button.addEventListener("click", function () {
-      showDetails(pokemon);
-    });
+    addClickListener(button, pokemon);
+
+    listItem.appendChild(button);
+    pokemonList.appendChild(listItem);
   }
 
   function showDetails(pokemon) {
