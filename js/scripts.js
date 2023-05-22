@@ -45,7 +45,26 @@ let pokemonRepository = (function () {
     );
   }
 
-  return { getAll, add, findByName };
+  function addListItem(pokemon) {
+    let pokemonList = document.querySelector(".pokemon-list");
+    let listItem = document.createElement("li");
+    let button = document.createElement("button");
+    button.innerText = pokemon.name;
+    button.classList.add("button-pokemon-list");
+    listItem.appendChild(button);
+    pokemonList.appendChild(listItem);
+
+    // Add event listener to the button
+    button.addEventListener("click", function () {
+      showDetails(pokemon);
+    });
+  }
+
+  function showDetails(pokemon) {
+    console.log(pokemon);
+  }
+
+  return { getAll, add, findByName, addListItem };
 })();
 
 pokemonRepository.add({
@@ -58,17 +77,5 @@ let bulbasaur = pokemonRepository.findByName("Bulbasaur");
 console.log(bulbasaur);
 
 pokemonRepository.getAll().forEach(function (pokemon) {
-  let pokemonHeightCheck =
-    pokemon.height > 0.6
-      ? " <span class='highlight'>- Wow, that's big!</span>"
-      : "";
-
-  document.write(
-    `<div class="card">
-      <h3>${pokemon.name}</h3>
-      <p>Height: ${pokemon.height}${pokemonHeightCheck}</p>
-      <p>Types: ${pokemon.types.join(", ")}</p>
-      <p>Abilities: ${pokemon.abilities.join(", ")}</p>
-    </div>`
-  );
+  pokemonRepository.addListItem(pokemon);
 });

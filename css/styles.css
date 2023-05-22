@@ -61,3 +61,19 @@ h1 {
 .card p {
   font-size: var(--font-size-h2);
 }
+
+.button-pokemon-list {
+  background-color: var(--gold);
+  color: var(--black);
+  border: 2px solid var(--monarch);
+  padding: 10px;
+  margin: 5px;
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  width: 70%;
+}
+
+.pokemon-list {
+  list-style-type: none;
+}
